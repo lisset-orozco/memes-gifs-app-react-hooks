@@ -19,7 +19,7 @@ nav > figure > img {
 
 nav > .categories > button {
   height: 30px;
-  font-size: 16px;
+  font-size: 0.94rem;
   border: none;
   background: #222222;
   color: white;
@@ -48,7 +48,7 @@ nav > .upload > button {
   background-color: blueviolet;
   padding: 0px 18px;
   font-weight: bolder;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   border: none;
   color: white;
   cursor: pointer;

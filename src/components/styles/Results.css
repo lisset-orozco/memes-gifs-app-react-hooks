@@ -1,0 +1,15 @@
+.results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 800px;
+  align-items: center;
+}
+
+.results > figure {
+  margin: 5px;
+  /* box-sizing: border-box; */
+}
+.results > figure > img {
+  max-width: 300px;
+}

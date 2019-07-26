@@ -41,15 +41,9 @@ export function gmailLogin() {
 }
 
 //FIREBASE SignOut
-export function signOut() {
-  localStorage.removeItem("user");
-  firebase.auth.signOut();
-}
-
-//FIREBASE LogOut
-export let logOut = () => {
+export function logOut() {
   firebase.auth().signOut();
   localStorage.removeItem("user");
-};
+}
 
 export default firebase;

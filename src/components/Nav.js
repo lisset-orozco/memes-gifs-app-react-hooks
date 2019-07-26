@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-import { gmailLogin } from "../services/Firebase.js";
+import { gmailLogin, logOut } from "../services/Firebase.js";
 import UploadModal from "./UploadModal";
 
 import "./styles/Nav.css";
@@ -8,6 +8,14 @@ import "./styles/Nav.css";
 export default function() {
   //state hooks
   let [user, setUser] = useState(null);
+
+  //life cicles:
+  useEffect(() => {
+    let userInText = localStorage.getItem("user");
+    let user = JSON.parse(userInText);
+    setUser(user);
+  }, [user]);
+
   //kind of method
   function login() {
     gmailLogin().then(user => {
@@ -46,7 +54,7 @@ export default function() {
             }
             alt="eyes"
           />
-          <span onClick={login} id="username">
+          <span onClick={user ? logOut : login} id="username">
             {user ? user.displayName : "Login"}
           </span>
         </div>

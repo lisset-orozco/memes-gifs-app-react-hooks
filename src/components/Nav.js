@@ -1,8 +1,20 @@
-import React from "react";
-import "./styles/Nav.css";
+import React, { useState } from "react";
+
+import { gmailLogin } from "../services/Firebase.js";
 import UploadModal from "./UploadModal";
 
+import "./styles/Nav.css";
+
 export default function() {
+  //state hooks
+  let [user, setUser] = useState(null);
+  //kind of method
+  function login() {
+    gmailLogin().then(user => {
+      setUser(user);
+    });
+  }
+
   return (
     <>
       <nav>
@@ -27,10 +39,16 @@ export default function() {
         <div className="user">
           <img
             id="photoURL"
-            src="https://media.giphy.com/avatars/default3.gif"
+            src={
+              user
+                ? user.photoURL
+                : "https://media.giphy.com/avatars/default3.gif"
+            }
             alt="eyes"
           />
-          <span id="username">Login</span>
+          <span onClick={login} id="username">
+            {user ? user.displayName : "Login"}
+          </span>
         </div>
       </nav>
       {false && <UploadModal />}

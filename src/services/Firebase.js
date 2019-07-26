@@ -12,7 +12,7 @@ let firebaseConfig = {
   messagingSenderId: "1006927157652",
   appId: "1:1006927157652:web:94570f71231155cb"
 };
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 // FIREBASE INITIALIZE AND REFS
 let firestore = firebase.firestore();
@@ -46,4 +46,10 @@ export function signOut() {
   firebase.auth.signOut();
 }
 
-export default Firebase;
+//FIREBASE LogOut
+export let logOut = () => {
+  firebase.auth().signOut();
+  localStorage.removeItem("user");
+};
+
+export default firebase;

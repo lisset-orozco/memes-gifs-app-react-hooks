@@ -1,16 +1,17 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import env from "../environment";
 
 // Initialize Firebase
 let firebaseConfig = {
-  apiKey: "AIzaSyCnumJ0qxAqjJya0O2bI-OYWX7Tg4HIH1k",
-  authDomain: "memes-react.firebaseapp.com",
-  databaseURL: "https://memes-react.firebaseio.com",
-  projectId: "memes-react",
-  storageBucket: "",
-  messagingSenderId: "1006927157652",
-  appId: "1:1006927157652:web:94570f71231155cb"
+  apiKey: env.apiKey,
+  authDomain: env.authDomain,
+  databaseURL: env.databaseURL,
+  projectId: env.projectId,
+  storageBucket: env.storageBucket,
+  messagingSenderId: env.messagingSenderId,
+  appId: env.appId
 };
 firebase.initializeApp(firebaseConfig);
 

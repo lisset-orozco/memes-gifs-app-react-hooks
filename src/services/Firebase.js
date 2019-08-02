@@ -25,6 +25,11 @@ export function writeMeme(object) {
   memesRef.doc(id).set(object);
 }
 
+//GUARDAR MEMES
+export function saveMeme(meme) {
+  memesRef.add(meme);
+}
+
 //FIREBASE LOGIN
 export function gmailLogin() {
   var provider = new firebase.auth.GoogleAuthProvider();

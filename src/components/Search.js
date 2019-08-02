@@ -13,14 +13,14 @@ export default function() {
     let unsubscribe = memesRef.onSnapshot(function(snap) {
       let memes = [];
       snap.forEach(doc => {
-        memes.push(doc);
+        memes.push(doc.data());
       });
       setResults(memes);
       setList(memes);
     });
 
     return unsubscribe;
-  });
+  }, []);
 
   function onChange(e) {
     let value = e.target.value;

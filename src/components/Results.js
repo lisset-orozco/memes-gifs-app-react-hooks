@@ -8,7 +8,7 @@ export default function({ results }) {
       {results.map((meme, index) => {
         return (
           <figure key={index}>
-            <img alt="result" src={meme.link} />
+            <img alt="result" src={meme.link} style={{ maxHeight: "256px" }} />
           </figure>
         );
       })}

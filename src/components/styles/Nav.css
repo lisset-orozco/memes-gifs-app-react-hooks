@@ -17,6 +17,10 @@ nav > figure > img {
   max-width: 30px;
 }
 
+nav > .categories {
+  margin-right: 4px;
+}
+
 nav > .categories > button {
   height: 30px;
   font-size: 0.94rem;
@@ -43,7 +47,7 @@ nav > .upload {
 }
 
 nav > .upload > button {
-  margin-right: 2px;
+  margin-right: 4px;
   height: 30px;
   background-color: blueviolet;
   padding: 0px 18px;

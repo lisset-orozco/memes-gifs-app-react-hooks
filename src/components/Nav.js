@@ -4,8 +4,10 @@ import { gmailLogin, logOut, saveMeme } from "../services/Firebase.js";
 import UploadModal from "./UploadModal";
 
 import "./styles/Nav.css";
+import CustomizedDialogs from "./CustomizedDialogs.js";
+//import categories from "../data/Categories";
 
-export default function() {
+export default function({ categories }) {
   //state hooks
   let [user, setUser] = useState(null);
   let [show, setShow] = useState(false);
@@ -35,6 +37,7 @@ export default function() {
     input.click();
     input.onchange = e => {
       let fr = new FileReader();
+
       fr.readAsDataURL(e.target.files[0]);
       fr.onload = () => {
         setLink(fr.result);
@@ -51,7 +54,7 @@ export default function() {
 
   function sendMeme() {
     let m = { ...meme, link };
-    saveMeme(m);
+    //saveMeme(m);
     setShow(false);
   }
 
@@ -65,12 +68,11 @@ export default function() {
           />
         </figure>
         <div className="categories">
-          <button>Reactions</button>
-          <button>Entertainment</button>
-          <button>Sports</button>
-          <button>Stickers</button>
-          <button>Artists</button>
-          <button>Icon</button>
+          {categories.map(option => (
+            <button key={option} value={option}>
+              {option}
+            </button>
+          ))}
         </div>
         {user && (
           <div className="upload">
@@ -92,13 +94,21 @@ export default function() {
           </span>
         </div>
       </nav>
+      {/* {console.log(show)} */}
       {show && (
-        <UploadModal
-          sendMeme={sendMeme}
-          onChange={onChange}
+        <CustomizedDialogs
           link={link}
+          sendMeme={sendMeme}
           setShow={setShow}
+          open={show}
+          onChange={onChange}
         />
+        // <UploadModal
+        //   sendMeme={sendMeme}
+        //   onChange={onChange}
+        //   link={link}
+        //   setShow={setShow}
+        // />
       )}
       <input ref={inputRef} accept="image/*" hidden id="file" type="file" />
     </>

@@ -5,9 +5,9 @@ import UploadModal from "./UploadModal";
 
 import "./styles/Nav.css";
 import CustomizedDialogs from "./CustomizedDialogs.js";
-//import categories from "../data/Categories";
+import categories from "../data/Categories";
 
-export default function({ categories }) {
+export default function() {
   //state hooks
   let [user, setUser] = useState(null);
   let [show, setShow] = useState(false);
@@ -54,7 +54,7 @@ export default function({ categories }) {
 
   function sendMeme() {
     let m = { ...meme, link };
-    //saveMeme(m);
+    saveMeme(m);
     setShow(false);
   }
 
@@ -102,6 +102,7 @@ export default function({ categories }) {
           setShow={setShow}
           open={show}
           onChange={onChange}
+          categories={categories}
         />
         // <UploadModal
         //   sendMeme={sendMeme}

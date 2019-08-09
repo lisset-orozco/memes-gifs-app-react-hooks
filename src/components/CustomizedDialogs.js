@@ -10,10 +10,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import { maxWidth } from "@material-ui/system";
 import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
-import categories from "../data/Categories";
 
 const styles = theme => ({
   root: {
@@ -81,12 +81,25 @@ const DialogActions = withStyles(theme => ({
   }
 }))(MuiDialogActions);
 
-const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
+const CustomizedDialogs = ({
+  link,
+  sendMeme,
+  setShow,
+  open,
+  onChange,
+  categories
+}) => {
   const classes = useStyles();
   //const [open, setOpen] = useState(true);
+  const [value, setValue] = useState("");
 
   function handleClickOpen() {
     //setOpen(true);
+  }
+
+  function handleChange(e) {
+    setValue(e.target.value);
+    onChange(e);
   }
 
   function handleClose() {
@@ -96,14 +109,6 @@ const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
 
   return (
     <div>
-      {/* <Button
-          variant="outlined"
-          color="secondary"
-          onClick={this.handleClickOpen}
-        >
-          Open dialog
-        </Button>
-          */}
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -121,7 +126,7 @@ const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
             Upload your beautiful meme
           </DialogTitle>
         </div>
-        <DialogContent dividers>
+        <DialogContent>
           <img
             src={link}
             id="preview"
@@ -134,7 +139,7 @@ const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
               maxHeight: "320px"
             }}
           />
-          <br />
+          {/* <br /> */}
           <TextField
             fullWidth
             id="outlined-dense"
@@ -144,7 +149,6 @@ const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
             variant="outlined"
             type="text"
             name="title"
-            //value={form.title}
             onChange={onChange}
             autoFocus
             required
@@ -159,11 +163,33 @@ const CustomizedDialogs = ({ link, sendMeme, setShow, open, onChange }) => {
             variant="outlined"
             type="text"
             name="tags"
-            //value={form.title}
             onChange={onChange}
             autoFocus
             required
           />
+          <TextField
+            fullWidth
+            id="outlined-dense"
+            select
+            label="category"
+            className={clsx(classes.textField, classes.dense)}
+            name="category"
+            value={value}
+            onChange={handleChange}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu
+              }
+            }}
+            margin="dense"
+            variant="outlined"
+          >
+            {categories.map(category => (
+              <MenuItem key={category} value={category}>
+                {category}
+              </MenuItem>
+            ))}
+          </TextField>
         </DialogContent>
         <DialogActions>
           <Button

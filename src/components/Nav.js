@@ -6,13 +6,17 @@ import UploadModal from "./UploadModal";
 import "./styles/Nav.css";
 import CustomizedDialogs from "./CustomizedDialogs.js";
 import categories from "../data/Categories";
+import { memesRef } from "../services/Firebase";
+import Search from "./Search.js";
 
-export default function() {
+export default function({ onClick }) {
   //state hooks
   let [user, setUser] = useState(null);
   let [show, setShow] = useState(false);
   let [link, setLink] = useState(null);
   let [meme, setMeme] = useState({});
+
+  let results = [];
   //refs
   let inputRef = useRef();
 
@@ -58,6 +62,26 @@ export default function() {
     setShow(false);
   }
 
+  // function onClick(e) {
+  //   results = "";
+  //   // results = e;
+  // }
+  // console.log(e.target.value);
+
+  // let unsubscribe = memesRef.onSnapshot(function(snap) {
+  //   results = [];
+  //   snap.forEach(doc => {
+  //     let data = doc.data();
+  //     if (data.category) results.push(doc.data());
+  //   });
+
+  //   console.log(results);
+  //setResults(memes);
+  //results = memes;
+  // setList(memes);
+  // });
+  // }
+
   return (
     <>
       <nav>
@@ -65,11 +89,13 @@ export default function() {
           <img
             src="https://firebasemx.com/static/media/firemx.018fbe39.png"
             alt="pizza"
+            onClick={onClick}
+            name="home"
           />
         </figure>
         <div className="categories">
           {categories.map(option => (
-            <button key={option} value={option}>
+            <button key={option} value={option} onClick={onClick}>
               {option}
             </button>
           ))}
@@ -94,6 +120,7 @@ export default function() {
           </span>
         </div>
       </nav>
+
       {/* {console.log(show)} */}
       {show && (
         <CustomizedDialogs

@@ -4,7 +4,7 @@ import Search from "./components/Search";
 
 const App = () => (
   <div>
-    <Nav />
+    {/* <Nav /> */}
     <Search />
   </div>
 );

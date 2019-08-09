@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { memesRef } from "../services/Firebase";
 import Results from "./Results";
 import "./styles/Search.css";
+import Nav from "./Nav";
 
 export default function() {
   //hooks
@@ -22,6 +23,26 @@ export default function() {
     return unsubscribe;
   }, []);
 
+  function onClick(e) {
+    let result = [];
+    let value = e.target.value;
+
+    if (e.target.name === "home") home();
+    else {
+      memesRef.onSnapshot(function(snap) {
+        snap.forEach(doc => {
+          let data = doc.data();
+          if (data.category === value) result.push(doc.data());
+        });
+        if (result.length > 0 ? setResults(result) : home());
+      });
+    }
+  }
+
+  function home() {
+    setResults(list);
+  }
+
   function onChange(e) {
     let value = e.target.value;
     let regex = new RegExp(value, "i");
@@ -31,6 +52,7 @@ export default function() {
 
   return (
     <>
+      <Nav onClick={onClick} />
       <section className="search">
         <input
           id="searching"

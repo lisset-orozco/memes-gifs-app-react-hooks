@@ -13,7 +13,7 @@
 </p>
 <br/>
 
-#
+---
 
 ### Login with gmail
 
@@ -24,7 +24,7 @@
   <br/>
 </div>
 
-#
+---
 
 ### Home with user logged
 
@@ -34,7 +34,8 @@
   </kbd>
   <br/>
 </div>
-#
+
+---
 
 ### Categories
 
@@ -44,7 +45,8 @@
   </kbd>
   <br/>
 </div>
-#
+
+---
 
 ### Search
 
@@ -54,7 +56,8 @@
   </kbd>
   <br/>
 </div>
-#
+
+---
 
 ### Upload
 
@@ -65,7 +68,7 @@
   <br/>
 </div>
 
-#
+---
 
 ### Responsive
 
@@ -79,7 +82,8 @@
   </kbd>
   <br/>
 </div>
-#
+
+---
 
 ### Log out
 

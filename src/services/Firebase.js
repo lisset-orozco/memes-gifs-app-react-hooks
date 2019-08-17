@@ -42,6 +42,7 @@ export function gmailLogin() {
       let userText = JSON.stringify(result.user);
 
       localStorage.setItem("user", userText);
+      // console.log(userText);
       return result.user;
     });
 }

@@ -1,11 +1,10 @@
 import React from "react";
-import Nav from "./components/Nav";
-import Search from "./components/Search";
+
+import AppContainer from "./components/AppContainer";
 
 const App = () => (
   <div>
-    {/* <Nav /> */}
-    <Search />
+    <AppContainer />
   </div>
 );
 

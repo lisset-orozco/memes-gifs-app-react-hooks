@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { withStyles } from "@material-ui/core/styles";
+
+import clsx from "clsx";
+import { withStyles, fade } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -8,10 +10,8 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { maxWidth } from "@material-ui/system";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import SaveIcon from "@material-ui/icons/Save";
 
@@ -46,6 +46,12 @@ const useStyles = makeStyles(theme => ({
       backgroundColor: "#b2b2b2",
       color: "white",
       border: "#b2b2b2"
+    }
+  },
+  buttonSave: {
+    backgroundColor: "#4CAF50", //"#4527A0",
+    "&:hover": {
+      backgroundColor: fade("#50407f", 0.8)
     }
   }
 }));
@@ -85,17 +91,11 @@ const CustomizedDialogs = ({
   link,
   sendMeme,
   setShow,
-  open,
   onChange,
   categories
 }) => {
   const classes = useStyles();
-  //const [open, setOpen] = useState(true);
   const [value, setValue] = useState("");
-
-  function handleClickOpen() {
-    //setOpen(true);
-  }
 
   function handleChange(e) {
     setValue(e.target.value);
@@ -118,7 +118,7 @@ const CustomizedDialogs = ({
           style={{
             fontWeight: "bold",
             textAlign: "center",
-            backgroundColor: "#222",
+            backgroundColor: "#311f68",
             color: "white"
           }}
         >
@@ -207,7 +207,7 @@ const CustomizedDialogs = ({
             type="submit"
             variant="contained"
             color="primary"
-            className={clsx(classes.button)}
+            className={classes.buttonSave}
             style={{ float: "right" }}
           >
             Save
